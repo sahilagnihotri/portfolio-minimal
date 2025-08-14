@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Portfolio Minimal Demo</title>
+    <link>http://localhost:1313/portfolio-minimal/post/</link>
+    <description>Recent content in Posts on Portfolio Minimal Demo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio-minimal/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>http://localhost:1313/portfolio-minimal/blog/2024/01/15/getting-started-with-hugo/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio-minimal/blog/2024/01/15/getting-started-with-hugo/</guid>
+      <description>&lt;p&gt;Hugo is a fantastic static site generator that makes building websites fast and fun. In this post, I&amp;rsquo;ll share my experience getting started with Hugo and why I think it&amp;rsquo;s perfect for developers.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-choose-hugo&#34;&gt;Why Choose Hugo?&lt;/h2&gt;&#xA;&lt;p&gt;Hugo stands out from other static site generators for several reasons:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Speed&lt;/strong&gt;: Hugo builds sites incredibly fast, even with thousands of pages&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;: Powerful templating system and content management&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;No Dependencies&lt;/strong&gt;: Single binary with no external dependencies&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Great Community&lt;/strong&gt;: Active community and extensive documentation&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h2&gt;&#xA;&lt;p&gt;Installing Hugo is straightforward:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

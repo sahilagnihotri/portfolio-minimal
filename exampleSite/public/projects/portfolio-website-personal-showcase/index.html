@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/portfolio-minimal/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-minimal/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Sahil Agnihotri">
+    <meta name="description" content="A minimal portfolio website showcasing my work and experience as a software developer">
+    
+    <title>Portfolio Website - Personal Showcase | Portfolio Minimal Demo</title>
+    
+    
+    <link rel="stylesheet" href="/portfolio-minimal/css/style.css" />
+    <link rel="stylesheet" href="/portfolio-minimal/css/fonts.css" />
+    
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      
+      <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      
+      <ul class="menu" id="nav-menu">
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/">Home</a>
+        </li>
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/about">About</a>
+        </li>
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/projects">Projects</a>
+        </li>
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/post">Blog</a>
+        </li>
+        
+      </ul>
+      
+      
+      
+      <div class="social-links">
+        
+        <a href="https://github.com/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        
+        
+        <a href="https://linkedin.com/in/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        
+        
+        <a href="mailto:tech.agnihotri@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        
+      </div>
+      
+    </nav>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            
+            const menuLinks = navMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            
+            document.addEventListener('click', function(event) {
+                if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+    });
+    </script>
+<div class="article-meta">
+<h1><span class="title">Portfolio Website - Personal Showcase</span></h1>
+
+<h2 class="date">2024/01/10</h2>
+</div>
+
+<main>
+<p>A minimal, modern portfolio website built with Hugo and the Portfolio Minimal theme. Showcases projects, blog posts, and professional experience in a clean, accessible design.</p>
+<h2 id="features">Features</h2>
+<ul>
+<li><strong>Clean Design</strong>: Minimal, distraction-free interface</li>
+<li><strong>Mobile Responsive</strong>: Works seamlessly across all devices</li>
+<li><strong>Dark Theme</strong>: Eye-friendly interface for extended reading</li>
+<li><strong>PDF Export</strong>: Export resume/CV directly from the website</li>
+<li><strong>Fast Loading</strong>: Optimized for performance and SEO</li>
+</ul>
+<h2 id="technology-stack">Technology Stack</h2>
+<p><strong>Frontend</strong></p>
+<ul>
+<li>Hugo static site generator</li>
+<li>Portfolio Minimal theme</li>
+<li>CSS custom properties for theming</li>
+<li>Responsive design with mobile-first approach</li>
+</ul>
+<p><strong>Hosting &amp; Deployment</strong></p>
+<ul>
+<li>GitHub Pages</li>
+<li>Automated deployment with GitHub Actions</li>
+<li>Custom domain support</li>
+</ul>
+<h2 id="key-features">Key Features</h2>
+<h3 id="modern-design">Modern Design</h3>
+<p>Clean, minimal design that focuses on content while maintaining visual appeal and professional appearance.</p>
+<h3 id="performance-optimized">Performance Optimized</h3>
+<ul>
+<li>Minimal JavaScript footprint</li>
+<li>Optimized CSS delivery</li>
+<li>Fast page load times</li>
+<li>SEO-friendly markup</li>
+</ul>
+<h3 id="accessibility">Accessibility</h3>
+<ul>
+<li>Keyboard navigation support</li>
+<li>Screen reader friendly</li>
+<li>High contrast design</li>
+<li>Semantic HTML structure</li>
+</ul>
+<h2 id="live-demo">Live Demo</h2>
+<p>🔗 <a href="https://sahilagnihotri.github.io">View Live Site</a><br>
+💻 <a href="https://github.com/sahilagnihotri/sahilagnihotri.github.io">Source Code</a><br>
+🎨 <a href="https://github.com/sahilagnihotri/portfolio-minimal">Theme Repository</a></p>
+<hr>
+<p>This project demonstrates the power of minimal design and static site generators for creating professional, fast-loading websites that are easy to maintain and update.</p>
+
+</main>
+
+  <footer>
+  
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.min.js" defer></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadPdfBtn = document.getElementById('download-pdf');
+    
+    if (downloadPdfBtn) {
+        downloadPdfBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            
+            const elementsToHide = document.querySelectorAll('.no-pdf, .export-buttons, nav, footer');
+            elementsToHide.forEach(el => el.style.display = 'none');
+            
+            
+            document.body.classList.add('print-mode');
+            
+            const element = document.querySelector('main');
+            const filename = 'sahil-agnihotri-resume.pdf';
+            
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff'
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait'
+                }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                
+                elementsToHide.forEach(el => el.style.display = '');
+                document.body.classList.remove('print-mode');
+            });
+        });
+    }
+});
+</script>
+
+
+
+
+  
+  
+  <hr/>
+  
+  
+  
+  
+  
+  <div class="footer-text">
+    <p>&copy; 2025 Sahil Agnihotri. 
+    Built with <a href="https://gohugo.io/">Hugo</a> using <a href="https://github.com/sahilagnihotri/portfolio-minimal">Portfolio Minimal</a> theme.</p>
+  </div>
+  
+  
+  
+  
+  
+  
+  <div class="social-links">
+    
+    <a href="https://github.com/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    
+    
+    <a href="mailto:tech.agnihotri@gmail.com" aria-label="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    
+  </div>
+  
+  
+  </footer>
+  </body>
+</html>

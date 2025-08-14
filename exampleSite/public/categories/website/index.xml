@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Website on Portfolio Minimal Demo</title>
+    <link>http://localhost:1313/portfolio-minimal/categories/website/</link>
+    <description>Recent content in Website on Portfolio Minimal Demo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Aug 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio-minimal/categories/website/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Portfolio Website - Personal Showcase</title>
+      <link>http://localhost:1313/portfolio-minimal/projects/</link>
+      <pubDate>Thu, 14 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio-minimal/projects/</guid>
+      <description>&lt;p&gt;A minimal, modern portfolio website built with Hugo and the Portfolio Minimal theme. Showcases projects, blog posts, and professional experience in a clean, accessible design.&lt;/p&gt;&#xA;&lt;h2 id=&#34;features&#34;&gt;Features&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Clean Design&lt;/strong&gt;: Minimal, distraction-free interface&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Mobile Responsive&lt;/strong&gt;: Works seamlessly across all devices&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Dark Theme&lt;/strong&gt;: Eye-friendly interface for extended reading&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;PDF Export&lt;/strong&gt;: Export resume/CV directly from the website&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Fast Loading&lt;/strong&gt;: Optimized for performance and SEO&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;technology-stack&#34;&gt;Technology Stack&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Frontend&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Hugo static site generator&lt;/li&gt;&#xA;&lt;li&gt;Portfolio Minimal theme&lt;/li&gt;&#xA;&lt;li&gt;CSS custom properties for theming&lt;/li&gt;&#xA;&lt;li&gt;Responsive design with mobile-first approach&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;Hosting &amp;amp; Deployment&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Best Practices on Portfolio Minimal Demo</title>
+    <link>http://localhost:1313/portfolio-minimal/categories/best-practices/</link>
+    <description>Recent content in Best Practices on Portfolio Minimal Demo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio-minimal/categories/best-practices/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Accessible Websites: A Developer&#39;s Guide</title>
+      <link>http://localhost:1313/portfolio-minimal/blog/2024/01/20/building-accessible-websites-a-developers-guide/</link>
+      <pubDate>Sat, 20 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio-minimal/blog/2024/01/20/building-accessible-websites-a-developers-guide/</guid>
+      <description>&lt;p&gt;Web accessibility isn&amp;rsquo;t just a nice-to-have—it&amp;rsquo;s essential for creating inclusive experiences that work for everyone. Let&amp;rsquo;s explore practical ways to make your websites more accessible.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-accessibility-matters&#34;&gt;Why Accessibility Matters&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Inclusive Design&lt;/strong&gt;: Ensures everyone can use your website&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Legal Compliance&lt;/strong&gt;: Many countries have accessibility requirements&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Better UX&lt;/strong&gt;: Accessible sites are often more usable for everyone&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;SEO Benefits&lt;/strong&gt;: Screen reader improvements often help search engines&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;key-principles-wcag&#34;&gt;Key Principles (WCAG)&lt;/h2&gt;&#xA;&lt;p&gt;The Web Content Accessibility Guidelines (WCAG) are built on four principles:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

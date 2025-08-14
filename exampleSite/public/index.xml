@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sahil Agnihotri on Portfolio Minimal Demo</title>
+    <link>http://localhost:1313/portfolio-minimal/</link>
+    <description>Recent content in Sahil Agnihotri on Portfolio Minimal Demo</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Jan 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/portfolio-minimal/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Getting Started with Hugo</title>
+      <link>http://localhost:1313/portfolio-minimal/blog/2024/01/15/getting-started-with-hugo/</link>
+      <pubDate>Mon, 15 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio-minimal/blog/2024/01/15/getting-started-with-hugo/</guid>
+      <description>&lt;p&gt;Hugo is a fantastic static site generator that makes building websites fast and fun. In this post, I&amp;rsquo;ll share my experience getting started with Hugo and why I think it&amp;rsquo;s perfect for developers.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-choose-hugo&#34;&gt;Why Choose Hugo?&lt;/h2&gt;&#xA;&lt;p&gt;Hugo stands out from other static site generators for several reasons:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Speed&lt;/strong&gt;: Hugo builds sites incredibly fast, even with thousands of pages&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Flexibility&lt;/strong&gt;: Powerful templating system and content management&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;No Dependencies&lt;/strong&gt;: Single binary with no external dependencies&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Great Community&lt;/strong&gt;: Active community and extensive documentation&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;getting-started&#34;&gt;Getting Started&lt;/h2&gt;&#xA;&lt;p&gt;Installing Hugo is straightforward:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About Me</title>
+      <link>http://localhost:1313/portfolio-minimal/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio-minimal/about/</guid>
+      <description>&lt;h1 id=&#34;sahil-agnihotri&#34;&gt;Sahil Agnihotri&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Software Developer &amp;amp; Architect&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m a passionate developer who enjoys creating clean, efficient solutions to complex problems. I believe in the power of minimal design and well-crafted code. I&amp;rsquo;m always interested in discussing new projects, opportunities, or just talking about technology and design. Feel free to reach out!&lt;/p&gt;&#xA;&lt;div class=&#34;no-pdf&#34;&gt;&#xA;&lt;div class=&#34;export-buttons&#34;&gt;&#xA;  &lt;a href=&#34;#&#34; id=&#34;download-pdf&#34; class=&#34;btn&#34;&gt;&#xA;    &lt;i class=&#34;fas fa-download&#34;&gt;&lt;/i&gt; Download PDF&#xA;  &lt;/a&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;</description>
+    </item>
+  </channel>
+</rss>

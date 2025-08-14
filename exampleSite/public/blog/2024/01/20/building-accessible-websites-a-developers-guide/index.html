@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/portfolio-minimal/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=portfolio-minimal/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Sahil Agnihotri">
+    <meta name="description" content="A minimal portfolio website showcasing my work and experience as a software developer">
+    
+    <title>Building Accessible Websites: A Developer&#39;s Guide | Portfolio Minimal Demo</title>
+    
+    
+    <link rel="stylesheet" href="/portfolio-minimal/css/style.css" />
+    <link rel="stylesheet" href="/portfolio-minimal/css/fonts.css" />
+    
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      
+      <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      
+      <ul class="menu" id="nav-menu">
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/">Home</a>
+        </li>
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/post">Blog</a>
+        </li>
+        
+        
+        
+        
+        <li>
+          <a href="/portfolio-minimal/about">About</a>
+        </li>
+        
+      </ul>
+      
+      
+      
+      <div class="social-links">
+        
+        <a href="https://github.com/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        
+        
+        <a href="https://linkedin.com/in/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        
+        
+        <a href="mailto:tech.agnihotri@gmail.com" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        
+      </div>
+      
+    </nav>
+
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', function() {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            
+            const menuLinks = navMenu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            
+            document.addEventListener('click', function(event) {
+                if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        }
+    });
+    </script>
+<div class="article-meta">
+<h1><span class="title">Building Accessible Websites: A Developer&rsquo;s Guide</span></h1>
+
+<h2 class="date">2024/01/20</h2>
+</div>
+
+<main>
+<p>Web accessibility isn&rsquo;t just a nice-to-have—it&rsquo;s essential for creating inclusive experiences that work for everyone. Let&rsquo;s explore practical ways to make your websites more accessible.</p>
+<h2 id="why-accessibility-matters">Why Accessibility Matters</h2>
+<ul>
+<li><strong>Inclusive Design</strong>: Ensures everyone can use your website</li>
+<li><strong>Legal Compliance</strong>: Many countries have accessibility requirements</li>
+<li><strong>Better UX</strong>: Accessible sites are often more usable for everyone</li>
+<li><strong>SEO Benefits</strong>: Screen reader improvements often help search engines</li>
+</ul>
+<h2 id="key-principles-wcag">Key Principles (WCAG)</h2>
+<p>The Web Content Accessibility Guidelines (WCAG) are built on four principles:</p>
+<ol>
+<li><strong>Perceivable</strong>: Information must be presentable in ways users can perceive</li>
+<li><strong>Operable</strong>: Interface components must be operable by all users</li>
+<li><strong>Understandable</strong>: Information and UI operation must be understandable</li>
+<li><strong>Robust</strong>: Content must be robust enough for various assistive technologies</li>
+</ol>
+<h2 id="practical-implementation">Practical Implementation</h2>
+<h3 id="semantic-html">Semantic HTML</h3>
+<p>Use proper HTML elements for their intended purpose:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Good --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit()&#34;</span>&gt;Submit Form&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">nav</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/home&#34;</span>&gt;Home&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">li</span>&gt;&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/about&#34;</span>&gt;About&lt;/<span style="color:#f92672">a</span>&gt;&lt;/<span style="color:#f92672">li</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">ul</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">nav</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Avoid --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">onclick</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;submit()&#34;</span>&gt;Submit Form&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><h3 id="alt-text-for-images">Alt Text for Images</h3>
+<p>Provide meaningful descriptions:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Descriptive alt text --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chart.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Sales increased 25% from Q1 to Q2 2024&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!-- Decorative images --&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;decoration.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span> <span style="color:#a6e22e">role</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;presentation&#34;</span>&gt;
+</span></span></code></pre></div><h3 id="keyboard-navigation">Keyboard Navigation</h3>
+<p>Ensure all interactive elements are keyboard accessible:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#75715e">/* Visible focus indicators */</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">button</span>:<span style="color:#a6e22e">focus</span><span style="color:#f92672">,</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">a</span>:<span style="color:#a6e22e">focus</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">outline</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#ae81ff">#0066cc</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">outline-offset</span>: <span style="color:#ae81ff">2</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">/* Skip links for keyboard users */</span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">skip-link</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">position</span>: <span style="color:#66d9ef">absolute</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">-40</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">left</span>: <span style="color:#ae81ff">6</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">background</span>: <span style="color:#ae81ff">#000</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">white</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">padding</span>: <span style="color:#ae81ff">8</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">text-decoration</span>: <span style="color:#66d9ef">none</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">transition</span>: <span style="color:#66d9ef">top</span> <span style="color:#ae81ff">0.3</span><span style="color:#66d9ef">s</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>.<span style="color:#a6e22e">skip-link</span>:<span style="color:#a6e22e">focus</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">top</span>: <span style="color:#ae81ff">6</span><span style="color:#66d9ef">px</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="testing-tools">Testing Tools</h2>
+<ul>
+<li><strong>Screen Readers</strong>: NVDA (Windows), VoiceOver (Mac), ORCA (Linux)</li>
+<li><strong>Browser Extensions</strong>: axe DevTools, WAVE</li>
+<li><strong>Automated Testing</strong>: Pa11y, axe-core</li>
+<li><strong>Manual Testing</strong>: Tab navigation, zoom to 200%</li>
+</ul>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ol>
+<li><strong>Missing alt text</strong> on informative images</li>
+<li><strong>Poor color contrast</strong> (aim for 4.5:1 minimum)</li>
+<li><strong>Inaccessible forms</strong> without proper labels</li>
+<li><strong>Keyboard traps</strong> where users can&rsquo;t navigate away</li>
+<li><strong>Moving content</strong> without pause controls</li>
+</ol>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li><strong>Learn the basics</strong>: Familiarize yourself with WCAG guidelines</li>
+<li><strong>Test with screen readers</strong>: Experience your site as others do</li>
+<li><strong>Use automated tools</strong>: Integrate accessibility testing into your workflow</li>
+<li><strong>Get user feedback</strong>: Include people with disabilities in your testing</li>
+</ol>
+<h2 id="conclusion">Conclusion</h2>
+<p>Building accessible websites benefits everyone. Start with semantic HTML, add proper ARIA labels where needed, and test with real users. Accessibility is a journey, not a destination—every improvement makes a difference.</p>
+<p>Remember: accessibility is not a feature you add later—it should be considered from the very beginning of your design and development process.</p>
+
+</main>
+
+  <footer>
+  
+
+
+
+
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.min.js" defer></script>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadPdfBtn = document.getElementById('download-pdf');
+    
+    if (downloadPdfBtn) {
+        downloadPdfBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            
+            const elementsToHide = document.querySelectorAll('.no-pdf, .export-buttons, nav, footer');
+            elementsToHide.forEach(el => el.style.display = 'none');
+            
+            
+            document.body.classList.add('print-mode');
+            
+            const element = document.querySelector('main');
+            const filename = 'sahil-agnihotri-resume.pdf';
+            
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff'
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait'
+                }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                
+                elementsToHide.forEach(el => el.style.display = '');
+                document.body.classList.remove('print-mode');
+            });
+        });
+    }
+});
+</script>
+
+
+
+
+  
+  
+  <hr/>
+  
+  
+  
+  
+  
+  <div class="footer-text">
+    <p>&copy; 2025 Sahil Agnihotri. 
+    Built with <a href="https://gohugo.io/">Hugo</a> using <a href="https://github.com/sahilagnihotri/portfolio-minimal">Portfolio Minimal</a> theme.</p>
+  </div>
+  
+  
+  
+  
+  
+  
+  <div class="social-links">
+    
+    <a href="https://github.com/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a>
+    
+    
+    <a href="https://linkedin.com/in/sahilagnihotri" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    
+    
+    <a href="mailto:tech.agnihotri@gmail.com" aria-label="Email">
+      <i class="fas fa-envelope"></i>
+    </a>
+    
+  </div>
+  
+  
+  </footer>
+  </body>
+</html>

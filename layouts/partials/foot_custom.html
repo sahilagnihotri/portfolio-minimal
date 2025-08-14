@@ -1,0 +1,92 @@
+{{/* Math rendering support - optional */}}
+{{ if .Site.Params.math }}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script src="//cdn.jsdelivr.net/npm/katex/dist/katex.min.js" defer></script>
+<script src="//cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js" defer></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ]
+    });
+});
+</script>
+{{ end }}
+
+{{/* Image centering utility */}}
+{{ if .Site.Params.centerImages }}
+<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.min.js" defer></script>
+{{ end }}
+
+{{/* PDF Export functionality - only if enabled */}}
+{{ if .Site.Params.enablePDFExport }}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const downloadPdfBtn = document.getElementById('download-pdf');
+    
+    if (downloadPdfBtn) {
+        downloadPdfBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Hide elements not needed in PDF
+            const elementsToHide = document.querySelectorAll('.no-pdf, .export-buttons, nav, footer');
+            elementsToHide.forEach(el => el.style.display = 'none');
+            
+            // Add print mode class
+            document.body.classList.add('print-mode');
+            
+            const element = document.querySelector('{{ .Site.Params.pdfExportSelector | default "main" }}');
+            const filename = '{{ .Site.Params.pdfFilename | default "export.pdf" }}';
+            
+            const opt = {
+                margin: [10, 10, 10, 10],
+                filename: filename,
+                image: { type: 'jpeg', quality: 0.95 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff'
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait'
+                }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                // Restore visibility
+                elementsToHide.forEach(el => el.style.display = '');
+                document.body.classList.remove('print-mode');
+            });
+        });
+    }
+});
+</script>
+{{ end }}
+
+{{/* Additional social links on specific pages */}}
+{{ if and .Site.Params.showSocialOnAbout (eq .RelPermalink "/about/") }}
+{{ if or .Site.Params.github .Site.Params.linkedin .Site.Params.email }}
+<div class="social-links">
+    {{ with .Site.Params.github }}
+    <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <i class="fab fa-github"></i> GitHub
+    </a>
+    {{ end }}
+    {{ with .Site.Params.linkedin }}
+    <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i> LinkedIn
+    </a>
+    {{ end }}
+    {{ with .Site.Params.email }}
+    <a href="{{ . }}" aria-label="Email">
+        <i class="fas fa-envelope"></i> Email
+    </a>
+    {{ end }}
+</div>
+{{ end }}
+{{ end }}
