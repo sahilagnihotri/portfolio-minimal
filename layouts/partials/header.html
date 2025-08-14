@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="author" content="{{ .Site.Params.author | default .Site.Title }}">
-    <meta name="description" content="{{ if .Description }}{{ .Description }}{{ else if .Site.Params.description }}{{ .Site.Params.description }}{{ else }}{{ .Site.Title }}{{ end }}">
     
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
     
@@ -12,18 +10,13 @@
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
     
-    <!-- Font Awesome for social icons -->
-    {{ if or .Site.Params.github .Site.Params.linkedin .Site.Params.email }}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    {{ end }}
     
     {{ partial "head_custom.html" . }}
   </head>
 
   <body>
     <nav class="navbar">
-      <!-- Mobile hamburger menu -->
-      <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu">
+      <button class="hamburger" id="hamburger-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -34,31 +27,36 @@
         {{ range .Site.Menus.main }}
         {{ $itemURL := replaceRE "/$" "" .URL }}
         {{ $pageURL := replaceRE "/$" "" $.RelPermalink }}
-        {{ $isCurrent := or (eq $pageURL $itemURL) (and (eq $itemURL "") (eq $pageURL "")) }}
-        <li{{ if $isCurrent }} class="active"{{ end }}>
+        {{ $isCurrent := eq $pageURL $itemURL }}
+        <li class="{{ if $isCurrent }}active{{ end }}">
           <a href="{{ .URL | relURL }}"{{ if $isCurrent }} aria-current="page"{{ end }}>{{ .Name }}</a>
         </li>
-        {{ end }}
+    {{/* Normalize trailing slashes for comparison */}}
+  {{ $itemURL := replaceRE "/$" "" .URL }}
+  {{ $pageURL := replaceRE "/$" "" $.RelPermalink }}
+  {{ $isCurrent := or (eq $pageURL $itemURL) (and (eq $itemURL "") (eq $pageURL "")) }}
+        <script>
+          console.log("Menu Item: {{ .Name }}");
+          console.log("Menu URL: {{ .URL }}");
+          console.log("Current Page RelPermalink: {{ $.RelPermalink }}");
+          console.log("Current Page Permalink: {{ $.Permalink }}");
+        </script>
+  {{ end }}
       </ul>
       
       <!-- Social links -->
       {{ if or .Site.Params.github .Site.Params.linkedin .Site.Params.email }}
       <div class="social-links">
-        {{ with .Site.Params.github }}
-        <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-github"></i>
         </a>
-        {{ end }}
-        {{ with .Site.Params.linkedin }}
-        <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-linkedin"></i>
         </a>
-        {{ end }}
-        {{ with .Site.Params.email }}
-        <a href="{{ . }}" aria-label="Email">
+        <!--a href="{{ .Site.Params.email }}">
           <i class="fas fa-envelope"></i>
         </a>
-        {{ end }}
+      </div-->
       </div>
       {{ end }}
     </nav>
@@ -82,14 +80,6 @@
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
                 });
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!hamburger.contains(event.target) && !navMenu.contains(event.target)) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                }
             });
         }
     });

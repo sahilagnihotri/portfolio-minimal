@@ -1,45 +1,8 @@
   <footer>
   {{ partial "foot_custom.html" . }}
-  
-  {{ if or .Site.Params.footer .Site.Params.showFooterSocial }}
-  <hr/>
-  {{ end }}
-  
-  <!-- Footer text -->
   {{ with .Site.Params.footer }}
-  <div class="footer-text">
-    {{ replace . "{Year}" now.Year | markdownify }}
-  </div>
-  {{ else }}
-  {{ if not .Site.Params.hideDefaultFooter }}
-  <div class="footer-text">
-    <p>&copy; {{ now.Year }} {{ .Site.Params.author | default .Site.Title }}. 
-    {{ if .Site.Params.showHugoBranding }}Built with <a href="https://gohugo.io/">Hugo</a> using <a href="https://github.com/sahilagnihotri/portfolio-minimal">Portfolio Minimal</a> theme.{{ end }}</p>
-  </div>
-  {{ end }}
-  {{ end }}
-  
-  <!-- Footer social links -->
-  {{ if .Site.Params.showFooterSocial }}
-  {{ if or .Site.Params.github .Site.Params.linkedin .Site.Params.email }}
-  <div class="social-links">
-    {{ with .Site.Params.github }}
-    <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a>
-    {{ end }}
-    {{ with .Site.Params.linkedin }}
-    <a href="{{ . }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    {{ end }}
-    {{ with .Site.Params.email }}
-    <a href="{{ . }}" aria-label="Email">
-      <i class="fas fa-envelope"></i>
-    </a>
-    {{ end }}
-  </div>
-  {{ end }}
+  <hr/>
+  {{ replace . "{Year}" now.Year | markdownify }}
   {{ end }}
   </footer>
   </body>
