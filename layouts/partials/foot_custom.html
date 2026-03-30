@@ -1,10 +1,11 @@
-<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
-<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.min.js" defer></script>
-<script src="//cdn.jsdelivr.net/npm/katex/dist/katex.min.js" defer></script>
-<script src="//cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js" defer></script>
-<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/render-katex.js" defer></script>
+{{ if .Site.Params.math }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils/js/math-code.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/katex/dist/contrib/auto-render.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/@xiee/utils/js/render-katex.js" defer></script>
+{{ end }}
 
-<script src="//cdn.jsdelivr.net/npm/@xiee/utils/js/center-img.min.js" defer></script>
 
 {{/*
     {{ if or .IsHome (eq .RelPermalink "/about/") }}
@@ -37,13 +38,8 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, looking for download buttons...');
     const downloadPdfBtn = document.getElementById('download-pdf');
     const downloadDocxBtn = document.getElementById('download-docx');
-    
-    console.log('PDF button found:', downloadPdfBtn);
-    console.log('DOCX button found:', downloadDocxBtn);
-    console.log('html2pdf available:', typeof html2pdf);
     
     if (downloadPdfBtn) {
         downloadPdfBtn.addEventListener('click', function(e) {
@@ -93,15 +89,8 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Extract clean text content
             const content = extractCleanTextForDocx();
-            
-            // Create proper RTF format that Word can read
-            const rtfHeader = `{\\rtf1\\ansi\\deff0 {\\fonttbl {\\f0 Times New Roman;}}`;
-            const rtfBody = content.replace(/<[^>]*>/g, '').replace(/\n/g, '\\par ');
-            const rtfFooter = `}`;
-            
-            const rtfContent = rtfHeader + rtfBody + rtfFooter;
-            
-            // For better Word compatibility, create a simplified HTML format
+
+            // Create a simplified HTML format for Word compatibility
             const wordHtml = `
                 <html xmlns:v="urn:schemas-microsoft-com:vml"
                       xmlns:o="urn:schemas-microsoft-com:office:office"

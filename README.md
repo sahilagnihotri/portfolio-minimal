@@ -175,23 +175,23 @@ theme = "portfolio-minimal"
   # Basic site information
   author = "Your Name"
   description = "A minimal portfolio website"
-
+  
   # Social media links (all optional)
   github = "https://github.com/yourusername"
   linkedin = "https://linkedin.com/in/yourusername"
   email = "mailto:your.email@example.com"
-
+  
   # Theme features (all optional)
   math = false                    # Enable KaTeX math rendering
   centerImages = true             # Center images in content
   enablePDFExport = false         # Enable PDF export functionality
   showSocialOnAbout = true        # Show social links on about page
-
+  
   # Footer settings
   showFooterSocial = false        # Show social links in footer
   hideDefaultFooter = false       # Hide the default copyright footer
   showHugoBranding = true         # Show "Built with Hugo" text in footer
-
+  
   # PDF Export settings (only if enablePDFExport = true)
   pdfExportSelector = "main"      # CSS selector for PDF content
   pdfFilename = "resume.pdf"      # Default filename for PDF export

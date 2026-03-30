@@ -1,22 +1,68 @@
 <!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode | default "en" }}">
+<html lang="{{ .Site.LanguageCode }}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    
-    <!-- Stylesheets -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src 'self'; img-src 'self' data: https:; connect-src 'self' https://cdn.jsdelivr.net;">
+    <script>
+      (function() {
+        var theme = localStorage.getItem('theme');
+        if (!theme) {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+    <title>{{ if .IsHome }}{{ .Site.Title }} — Technical Architect | XR, AI & Digital Twin{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta name="author" content="{{ .Site.Params.author }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+    <meta property="og:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}">
+    <meta name="twitter:description" content="{{ with .Params.description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+
+    <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
     <link rel="stylesheet" href="{{ "css/style.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}" />
-    
-    
+
     {{ partial "head_custom.html" . }}
+
+    {{ if .IsHome }}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ .Site.Params.author }}",
+      "jobTitle": "Technical Architect",
+      "url": "{{ .Site.BaseURL }}",
+      "sameAs": [
+        "{{ .Site.Params.github }}",
+        "{{ .Site.Params.linkedin }}"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Oslo",
+        "addressCountry": "Norway"
+      }
+    }
+    </script>
+    {{ end }}
   </head>
 
   <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
     <nav class="navbar">
-      <button class="hamburger" id="hamburger-menu">
+      <button class="hamburger" id="hamburger-menu" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -27,38 +73,28 @@
         {{ range .Site.Menus.main }}
         {{ $itemURL := replaceRE "/$" "" .URL }}
         {{ $pageURL := replaceRE "/$" "" $.RelPermalink }}
-        {{ $isCurrent := eq $pageURL $itemURL }}
+        {{ $isCurrent := or (eq $pageURL $itemURL) (and (eq $itemURL "") (eq $pageURL "")) }}
         <li class="{{ if $isCurrent }}active{{ end }}">
           <a href="{{ .URL | relURL }}"{{ if $isCurrent }} aria-current="page"{{ end }}>{{ .Name }}</a>
         </li>
-    {{/* Normalize trailing slashes for comparison */}}
-  {{ $itemURL := replaceRE "/$" "" .URL }}
-  {{ $pageURL := replaceRE "/$" "" $.RelPermalink }}
-  {{ $isCurrent := or (eq $pageURL $itemURL) (and (eq $itemURL "") (eq $pageURL "")) }}
-        <script>
-          console.log("Menu Item: {{ .Name }}");
-          console.log("Menu URL: {{ .URL }}");
-          console.log("Current Page RelPermalink: {{ $.RelPermalink }}");
-          console.log("Current Page Permalink: {{ $.Permalink }}");
-        </script>
-  {{ end }}
+        {{ end }}
       </ul>
-      
-      <!-- Social links -->
-      {{ if or .Site.Params.github .Site.Params.linkedin .Site.Params.email }}
       <div class="social-links">
-        <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+          <span id="theme-icon">&#9790;</span>
+        </button>
+        <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer">
+        <a href="{{ .Site.Params.linkedin }}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
-        <!--a href="{{ .Site.Params.email }}">
+        <!-- Email link disabled for now
+        <a href="{{ .Site.Params.email }}">
           <i class="fas fa-envelope"></i>
         </a>
-      </div-->
+        -->
       </div>
-      {{ end }}
     </nav>
 
     <!-- Mobile navigation script -->
@@ -71,6 +107,7 @@
             hamburger.addEventListener('click', function() {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                hamburger.setAttribute('aria-expanded', navMenu.classList.contains('active'));
             });
             
             // Close menu when clicking on a link
@@ -82,5 +119,38 @@
                 });
             });
         }
+
+        // Theme toggle
+        var themeToggle = document.getElementById('theme-toggle');
+        var themeIcon = document.getElementById('theme-icon');
+
+        function updateIcon(theme) {
+            if (themeIcon) {
+                themeIcon.textContent = theme === 'dark' ? '\u263E' : '\u2600';
+            }
+        }
+
+        // Set initial icon based on current theme
+        var currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateIcon(currentTheme);
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', function() {
+                var current = document.documentElement.getAttribute('data-theme') || 'dark';
+                var next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+                updateIcon(next);
+            });
+        }
+
+        // Listen for OS preference changes
+        window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) {
+                var theme = e.matches ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', theme);
+                updateIcon(theme);
+            }
+        });
     });
     </script>

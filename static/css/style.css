@@ -1,4 +1,52 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin-600.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/inter-v20-latin-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-v24-latin-regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-v24-latin-500.woff2') format('woff2');
+}
 
 /* Fix for selected menu button being larger than others on mobile */
 /* Place this after the default mobile menu styles for highest specificity */
@@ -52,6 +100,7 @@
   --color-text: #f8fafc;
   --color-text-secondary: #cbd5e1;
   --color-text-muted: #94a3b8;
+  --color-text-light: #e2e8f0;
 
   --color-border: #334155;
   --color-border-light: #475569;
@@ -67,6 +116,39 @@
 
   --transition: all 0.2s ease-in-out;
   --transition-fast: all 0.1s ease-in-out;
+}
+
+/* Light theme overrides */
+[data-theme="light"] {
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #0891b2;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-card: #ffffff;
+
+  --color-text: #1e293b;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-text-light: #94a3b8;
+
+  --color-border: #e2e8f0;
+  --color-border-light: #cbd5e1;
+
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 10px 10px -5px rgb(0 0 0 / 0.1);
+}
+
+/* Smooth transition for theme switching */
+html, body, main, .navbar, .content-section, .vitae-card, .hero-section {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body {
@@ -234,48 +316,21 @@ hr {
   color: var(--color-text-light);
 }
 
-/* Target the exact problematic HTML pattern */
-.article-meta {
-  display: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  height: 0 !important;
-  border: none !important;
-  visibility: hidden !important;
-  overflow: hidden !important;
-}
-
-/* Aggressively hide empty elements */
+/* Hide article-meta only when empty */
 .article-meta:empty,
 .article-meta:has(h1:empty),
-.hero-section:empty,
-.article-meta:has(.title:empty),
-.article-meta:has(h1:has(.title:empty)) {
-  display: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  height: 0 !important;
-  border: none !important;
-  visibility: hidden !important;
-}
-
-.article-meta h1:empty,
-.article-meta .title:empty,
-.article-meta h1:has(.title:empty),
-.article-meta h1 span.title:empty {
-  display: none !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  height: 0 !important;
-  visibility: hidden !important;
+.article-meta:has(.title:empty) {
+  display: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Hide any empty sections */
 section:empty,
 div:empty:not(.social-links):not([class*="icon"]) {
-  display: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  display: none;
+  padding: 0;
+  margin: 0;
 }
 
 .menu, .article-meta, footer
@@ -310,10 +365,9 @@ div:empty:not(.social-links):not([class*="icon"]) {
     outline: none !important;
   }
 
-  .menu li a:focus {
-    border: none !important;
-    outline: none !important;
-    box-shadow: none !important;
+  .menu li a:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
   }
 }
 
@@ -336,6 +390,9 @@ code {
   border-radius: 4px;
   font-family: 'JetBrains Mono', Monaco, 'Cascadia Code', monospace;
   font-size: 0.875rem;
+  color: var(--color-accent);
+}
+
 /* Print/PDF styles: force white background and black text */
 @media print {
   * {
@@ -432,8 +489,6 @@ code {
     padding-bottom: 0 !important;
   }
 }
-  color: var(--color-accent);
-}
 
 pre code {
   background: none;
@@ -449,6 +504,31 @@ img, iframe, video {
 
 main {
   hyphens: auto;
+}
+
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.skip-to-content:focus {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  text-decoration: none;
+  z-index: 9999;
 }
 
 /* Improved focus states for accessibility */
@@ -496,6 +576,15 @@ html {
 
 .animate-fade-in {
   animation: fadeInUp 0.6s ease-out;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Selection styling */
@@ -592,6 +681,31 @@ tr:hover {
   transform: scale(1.1);
 }
 
+/* Theme toggle button */
+.theme-toggle {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+  transition: var(--transition);
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+.theme-toggle:hover {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+  transform: scale(1.1);
+}
+
 footer {
   margin-top: 2rem;
   padding: 1.5rem 0;
@@ -604,8 +718,9 @@ footer .social-links {
   justify-content: center;
 }
 
-/*---------------------------------------------------------------
-/* About Section */
+/* ---------------------------------------------------------------
+   About Section
+   --------------------------------------------------------------- */
 
 .hero-header {
   text-align: left;
@@ -779,6 +894,15 @@ footer .social-links {
     min-height: 32px;
   }
 
+  /* Theme toggle in mobile navbar */
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    margin-right: 0.25rem;
+  }
+
   /* Fix social media buttons on mobile */
   .social-links {
     gap: 1.5rem;
@@ -853,7 +977,7 @@ footer .social-links {
   .hero-header {
     margin-bottom: 1rem;
     padding: 0.5rem 0;
-    text-align: center;
+    text-align: left;
   }
 
   .about-section {
@@ -970,9 +1094,13 @@ footer .social-links {
   }
 
   .btn {
-    width: 100%;
+    width: auto;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    min-width: auto;
+    min-height: auto;
   }
 
   h1 { font-size: 1.75rem; }
@@ -1028,11 +1156,9 @@ footer .social-links {
   }
 }
 
-/*---------------------------------------------------------------
-/* Vitae Titles */
-/*---------------------------------------------------------------
-
-/* Section Titles */
+/* ---------------------------------------------------------------
+   Vitae Titles / Section Titles
+   --------------------------------------------------------------- */
 .vitae-section-title {
   font-size: 1.875rem;
   font-weight: 700;
@@ -1099,7 +1225,7 @@ footer .social-links {
 
 .vitae-card h4 a,
 .vitae-card h4 a:-webkit-any-link {
-  color: #ffffff !important;
+  color: var(--color-text) !important;
   text-decoration: none;
 }
 
@@ -1108,10 +1234,10 @@ footer .social-links {
   text-decoration: underline;
 }
 
-/* Force all links in vitae cards to be white for better visibility */
+/* Force all links in vitae cards to match theme text color */
 .vitae-card a,
 .vitae-card a:-webkit-any-link {
-  color: #ffffff !important;
+  color: var(--color-text) !important;
 }
 
 .vitae-card a:hover {
@@ -1192,16 +1318,16 @@ main ul li,
 }
 
 .btn-outline {
-  background: var(--color-primary);
-  color: #fff;
+  background: transparent;
+  color: var(--color-primary);
   border: 2px solid var(--color-primary);
   box-shadow: var(--shadow-sm);
 }
 
 .btn-outline:hover, .btn-outline:focus-visible {
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  background: var(--color-primary);
   color: #fff;
-  border-color: var(--color-accent);
+  border-color: var(--color-primary);
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 6px 20px 0 rgb(59 130 246 / 0.15);
   outline: none;
@@ -1612,4 +1738,11 @@ main {
   color: #000 !important;
   text-decoration: none !important;
   background: #fff !important;
+}
+
+/* Center images (replaces center-img.min.js) */
+main img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
